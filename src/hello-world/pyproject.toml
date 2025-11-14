@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "hello-world"
+version = "0.1.0"
+description = "A simple console application demonstrating Clean Architecture and TDD"
+authors = ["Sagar Pratap Singh"]
+readme = "README.md"
+package-mode = true
+
+[tool.poetry.dependencies]
+python = "^3.13"
+structlog = "^23.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+black = "^23.7.0"
+flake8 = "^6.0.0"
+mypy = "^1.5.0"
+pre-commit = "^3.3.0"
+
+[tool.poetry.scripts]
+hello-world = "hello_world.__main__:main_entry"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

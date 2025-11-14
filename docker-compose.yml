@@ -1,0 +1,43 @@
+services:
+  lambda:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lunarcrush-lambda
+    env_file:
+      - tests/.env.test
+    volumes:
+      - ./:/var/task
+      - ./tests/.env.test:/var/task/.env.test:ro
+    ports:
+      - "9000:8080"
+    depends_on:
+      - localstack
+    networks:
+      - lunarcrush-network
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: lunarcrush-localstack
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=s3,ssm
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+      - localstack-data:/tmp/localstack/data
+      - ./scripts/localstack-setup:/docker-entrypoint-initaws.d
+    networks:
+      - lunarcrush-network
+
+volumes:
+  localstack-data:
+
+networks:
+  lunarcrush-network:
+    driver: bridge

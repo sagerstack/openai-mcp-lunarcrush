@@ -1,0 +1,39 @@
+# Implementation Plan Management
+
+Guidelines for managing implementation plans in markdown files to track progress on completing a user story.
+Adopt the best coding practices when implementing each task
+
+## File Location
+- **Location:** typically same folder as user story
+- **Filename pattern:** `impl-plan-[user-story-id].md`
+- **Section** Locate the Task-Based Implementation Plan section in the implementation plan
+
+## Task Implementation
+- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say “yes” or "y"
+- **Completion protocol:**  
+  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.  
+  2. If **all** subtasks underneath a parent task are now `[x]`, also mark the **parent task** as completed.  
+- If a parent-task or sub-task is marked as `[MANUAL]`, stop and ask user to implement it, and mark `[x]` after completion. Once this is done, continue implementation from the next task.
+
+## Implementation Plan Maintenance
+
+1. **Update the implementation plan as you work:**
+   - Mark tasks and subtasks as completed (`[x]`) per the protocol above.
+   - Add new tasks as they emerge.
+
+2. **Maintain the “Relevant Files” section:**
+   - List every file created or modified.
+   - Give each file a one‑line description of its purpose.
+
+## AI Instructions
+
+When working with implementation plans, the AI must:
+
+1. Regularly update the implementation plan file after finishing any significant work.
+2. Follow the completion protocol:
+   - Mark each finished **sub‑task** `[x]`.
+   - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
+3. Add newly discovered tasks.
+4. Keep “Relevant Files” accurate and up to date.
+5. Before starting work, check which sub‑task is next.
+6. After implementing a sub‑task, update the file and then pause for user approval.
